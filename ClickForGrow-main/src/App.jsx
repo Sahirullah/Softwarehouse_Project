@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import graLogo from './assets/logo.png'
 import heroImg1 from './assets/hero_Section1.webp'
 import heroImg2 from './assets/hero_Section2.webp'
+import heroImg3 from './assets/hero_Section3.jpg'
 import serviceImg2 from './assets/Services/digital-marketing-300x223.png.webp'
 import aboutImg from './assets/About_Section1.webp'
 import team1 from './assets/Team/1 (2).jpg'
@@ -33,7 +34,7 @@ function App() {
 
 
   
-  const heroImages = [heroImg1, heroImg2]
+  const heroImages = [heroImg1, heroImg2, heroImg3]
   const teamMembers = 6
   
   useEffect(() => {
