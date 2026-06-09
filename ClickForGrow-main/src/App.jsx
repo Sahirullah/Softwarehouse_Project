@@ -14,6 +14,7 @@ import team6 from './assets/Team/6.jpg'
 import workProcess1 from './assets/Work Process/reqirement.png'
 import workProcess2 from './assets/Work Process/design.png'
 import workProcess3 from './assets/Work Process/final work.png'
+import whatsappBtn from './assets/Whatsapp-btn.avif'
 import './App.css'
 
 function App() {
@@ -921,6 +922,28 @@ function App() {
         <div className="footer-decoration footer-decoration-left"></div>
         <div className="footer-decoration footer-decoration-right"></div>
       </footer>
+
+      {/* WhatsApp Chat Button */}
+      <a 
+        href="https://wa.me/923130907441?text=Hello, I would like to know more about your services." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="whatsapp-btn"
+        title="Chat with us on WhatsApp"
+      >
+        <img src={whatsappBtn} alt="WhatsApp Chat" />
+      </a>
+
+      {/* WhatsApp Button */}
+      <a 
+        href="https://wa.me/923130907441?text=Hello%20ClickForGrow%20team"
+        className="whatsapp-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Chat with us on WhatsApp"
+      >
+        <img src={whatsappBtn} alt="WhatsApp Chat" />
+      </a>
 
     </>
   )
