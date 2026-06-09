@@ -18,6 +18,7 @@ import './App.css'
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [fadeOut, setFadeOut] = useState(false)
   const [reviewScroll, setReviewScroll] = useState(0)
   const [teamScrollPosition, setTeamScrollPosition] = useState(0)
   const reviewCarouselRef = useRef(null)
@@ -39,19 +40,31 @@ function App() {
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 5000)
+      setFadeOut(true)
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+        setFadeOut(false)
+      }, 500)
+    }, 5500)
     return () => clearInterval(interval)
   }, [])
 
 
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+    setFadeOut(true)
+    setTimeout(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+      setFadeOut(false)
+    }, 500)
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)
+    setFadeOut(true)
+    setTimeout(() => {
+      setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)
+      setFadeOut(false)
+    }, 500)
   }
 
 
@@ -93,7 +106,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="hero" style={{ backgroundImage: `url(${heroImages[currentSlide]})` }}>
+      <section className={`hero ${fadeOut ? 'fade-out' : ''}`} style={{ backgroundImage: `url(${heroImages[currentSlide]})` }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-badge">
