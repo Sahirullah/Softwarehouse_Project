@@ -93,12 +93,10 @@ function App() {
             <span>ClickForGrow</span>
           </div>
           <nav className="nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#pages">Pages</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" onClick={(e) => { e.preventDefault(); document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' }); }}>Home</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }}>About</a>
+            <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }}>Services</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact</a>
             <a href="#search" className="search-icon">🔍</a>
           </nav>
           <button className="cta-btn">Get A Quote →</button>
@@ -106,7 +104,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className={`hero ${fadeOut ? 'fade-out' : ''}`} style={{ backgroundImage: `url(${heroImages[currentSlide]})` }}>
+      <section id="home" className={`hero ${fadeOut ? 'fade-out' : ''}`} style={{ backgroundImage: `url(${heroImages[currentSlide]})` }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-badge">
@@ -143,7 +141,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section className="services">
+      <section className="services" id="services">
         <div className="services-container">
           <div className="services-header">
             <div className="services-title">
@@ -240,7 +238,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section className="about">
+      <section className="about" id="about">
         <div className="about-wrapper">
           <div className="about-left">
             <div className="about-image-container">
@@ -767,50 +765,82 @@ function App() {
           </div>
         </div>
       </section>
+      {/* Contact Section */}
+      <section className="contact-section" id="contact">
+        <div className="contact-wrapper">
+          {/* Contact Form Side */}
+          <div className="contact-form-side">
+            <div className="contact-form-header">
+              <span className="contact-badge">💬 TALK TO US</span>
+              <h2>How May We Help You!</h2>
+            </div>
 
-      {/* Client Review Section */}
-      <section className="client-review">
-        <div className="review-container">
-          <div className="review-header">
-            <span className="review-label">🔵 CLIENT'S REVIEW</span>
-            <h2>What Our Clients Say</h2>
-            <p>Hear from our satisfied customers about their experience with ClickForGrow</p>
+            <form className="contact-form-main">
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Your Name*</label>
+                  <input type="text" placeholder="Robot fox" required />
+                </div>
+                <div className="form-group">
+                  <label>Your Email*</label>
+                  <input type="email" placeholder="info@example.com" required />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Subject*</label>
+                  <input type="text" placeholder="Subject" required />
+                </div>
+                <div className="form-group">
+                  <label>Your Phone*</label>
+                  <input type="tel" placeholder="+1253-457-7840" required />
+                </div>
+              </div>
+
+              <div className="form-group full-width">
+                <label>Message*</label>
+                <textarea placeholder="Write Message" rows="6" required></textarea>
+              </div>
+
+              <button type="submit" className="send-btn">Send Message</button>
+            </form>
           </div>
 
-          <div className="review-content">
-            <button className="review-nav-btn prev" onClick={() => {
-              const wrapper = document.querySelector('.review-cards-wrapper');
-              if (wrapper) {
-                wrapper.scrollBy({ left: -340, behavior: 'smooth' });
-              }
-            }}>❮</button>
+          {/* Testimonials Side */}
+          <div className="testimonials-side">
+            <div className="testimonials-header">
+              <span className="testimonials-badge">🔵 CLIENTS REVIEW</span>
+              <h2>What They Say About Our</h2>
+              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
+            </div>
 
-            <div className="review-cards-wrapper" ref={reviewCarouselRef}>
-              <div className="review-cards">
-                {[...reviews, ...reviews, ...reviews].map((review, index) => (
-                  <div className="review-card" key={index}>
-                    <div className="review-rating">
-                      <span>⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <p className="review-text">Consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus.</p>
-                    <div className="review-author">
-                      <img src={review.image} alt={review.name} className="review-avatar" />
-                      <div>
-                        <p className="author-name">{review.name}</p>
-                        <p className="author-role">{review.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            <div className="testimonial-card">
+              <div className="testimonial-rating">
+                <span>⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="testimonial-text">Consectetur adipiscing elit. Integer nunc viverra laoreet est the is porta premium metus aliquam eget maecenas porta is nunc viverra Aenean pulvinar maximum leo</p>
+              <div className="testimonial-author">
+                <img src={team1} alt="Suborna Tarchera" className="author-avatar" />
+                <div className="author-info">
+                  <p className="author-name">Suborna Tarchera</p>
+                  <p className="author-role">Web Developer</p>
+                </div>
               </div>
             </div>
 
-            <button className="review-nav-btn next" onClick={() => {
-              const wrapper = document.querySelector('.review-cards-wrapper');
-              if (wrapper) {
-                wrapper.scrollBy({ left: 340, behavior: 'smooth' });
-              }
-            }}>❯</button>
+            <div className="testimonial-nav">
+              <button className="nav-dot prev-nav">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <button className="nav-dot next-nav active">
+                <svg viewBox="0 0 24 24" fill="white" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
