@@ -1,9 +1,8 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build --prefix ClickForGrow-main",
   "devCommand": "npm run dev",
-  "installCommand": "npm ci",
+  "installCommand": "npm ci --prefix ClickForGrow-main",
   "framework": "vite",
-  "root": "ClickForGrow-main",
   "outputDirectory": "ClickForGrow-main/dist",
   "routes": [
     {
